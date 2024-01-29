@@ -18,11 +18,11 @@ public class WaypointFollower : MonoBehaviour
         if(Vector2.Distance(transform.position, currentWaypoint.transform.position) < 0.1f)
         {
             waypointIndex++;
-            Debug.Log("Moving to next waypoint!");
+            //Debug.Log("Moving to next waypoint!");
             if(waypointIndex == waypoints.Length)
             {
                 waypointIndex = 0;
-                Debug.Log("Resetting waypoint!");
+                //Debug.Log("Resetting waypoint!");
             }
             currentWaypoint = waypoints[waypointIndex];
         }

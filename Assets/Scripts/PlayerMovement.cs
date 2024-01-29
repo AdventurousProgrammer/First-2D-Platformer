@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource jumpSoundEffect;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private int numJumps = 2;
+    [SerializeField] private int jumpsTaken = 0;
 
     private enum AnimationState 
     {
@@ -39,6 +41,15 @@ public class PlayerMovement : MonoBehaviour
     {
         float dirX = UpdateKeyboardInput();
         UpdateAnimationState(dirX);
+ 
+        if(IsGrounded())
+        {
+            jumpsTaken = 0;
+        }
+
+        Debug.Log("Is Grounded?: " + IsGrounded());
+
+        //Debug.Log("Jumps Taken: " + jumpsTaken);
     }
     // Update is called once per frame
     private float UpdateKeyboardInput()
@@ -46,9 +57,11 @@ public class PlayerMovement : MonoBehaviour
         float dirX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(dirX * runningSpeed, rb.velocity.y);
 
-        if(Input.GetButtonDown("Jump") && IsGrounded())
+        if(Input.GetButtonDown("Jump") && jumpsTaken < numJumps)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpsTaken++;
+            Debug.Log("Jump: " + jumpsTaken);
             jumpSoundEffect.Play();
         }
 
@@ -57,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateAnimationState(float dirX)
     {
+        
+
         if(dirX > 0f)
         {
             state = AnimationState.Running;
@@ -75,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
       
         if(rb.velocity.y > 0.1f)
         {
-            Debug.Log("Jumping Animation");
+            //Debug.Log("Jumping Animation");
             state = AnimationState.Jumping;
         }
         else if(rb.velocity.y < -0.1f)
