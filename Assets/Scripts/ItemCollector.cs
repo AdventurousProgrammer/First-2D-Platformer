@@ -15,10 +15,11 @@ public class ItemCollector : MonoBehaviour
    {
         if(coll.gameObject.CompareTag("Cherry"))
         {
-            Debug.Log("Player Collected Cherry!");
+            //Debug.Log("Player Collected Cherry!");
             Destroy(coll.gameObject);
-            numCherries++;
-            cherriesText.text = "Cherries: " + numCherries;
+            //numCherries++;
+            StateNameController.numCherries++;
+            cherriesText.text = "Cherries: " + StateNameController.numCherries;
             itemCollectSoundEffect.Play();
         }
    }

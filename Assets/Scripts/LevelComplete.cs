@@ -33,5 +33,5 @@ public class LevelComplete : MonoBehaviour
     private void CompleteLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    } 
 }
