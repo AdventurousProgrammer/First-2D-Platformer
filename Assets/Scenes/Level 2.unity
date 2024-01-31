@@ -543,7 +543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 143.01788, y: -34.674805}
+  m_AnchoredPosition: {x: 230, y: -64}
   m_SizeDelta: {x: 557.644, y: 35.3329}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159861423
@@ -93903,6 +93903,8 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
+  numJumps: 2
+  jumpsTaken: 0
 --- !u!95 &1709514702
 Animator:
   serializedVersion: 5
