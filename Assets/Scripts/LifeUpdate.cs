@@ -11,7 +11,7 @@ public class LifeUpdate : MonoBehaviour
 
    private Animator anim;
    private Rigidbody2D rb;
-
+   private bool justDied = false;
    [SerializeField] private AudioSource deathSoundEffect;
 
    private void Start()
@@ -20,6 +20,13 @@ public class LifeUpdate : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
    }
    
+   private void OnTriggerEnter2D(Collider2D coll)
+   {
+        if(coll.gameObject.CompareTag("Death Zone"))
+        {
+             Die();
+        }
+   }
   
    private void OnCollisionEnter2D(Collision2D coll)
    {

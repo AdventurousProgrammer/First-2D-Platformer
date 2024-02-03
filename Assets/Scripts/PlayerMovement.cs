@@ -71,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
     void UpdateAnimationState(float dirX)
     {
         
-
         if(dirX > 0f)
         {
             state = AnimationState.Running;
